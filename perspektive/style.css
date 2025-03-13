@@ -2,7 +2,7 @@
 
 html, body {
   height: 100%;
-  margin: 0;
+  margin: 01;
 }
 
 ul, ol {
@@ -95,10 +95,10 @@ h2 {
   line-height: 1.6;
 }
 
-footer {
   footer {
-  height: 100px;
-  background: #090526;
+    footer {
+    height: 100px;
+    background: #090526;
 }
 }
 
