@@ -1,104 +1,92 @@
 
-
-html, body {
-  height: 100%;
-  margin: 01;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-ul, ol {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-img {
-  max-width: 80%;
-  height: 250px;
-}
 body {
   font-family: "Verdana", sans-serif;
   background: #594251;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+
 header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 60px;
   background: #090526;
   font-size: 16px;
   color: #888797;
-  line-height: 60px;
   text-align: center;
-  padding-left: 15px;
 }
 
+img{ 
+  height: 180px;
+}
 
 .link-table {
-  width: 80%;
-  margin: 0 auto;
-  border-collapse: collapse;
-  text-align: center;
-}
-
-.link-table td {
-  padding: 20px;
-  background: #BF6F76;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
 
 .link-table a {
+  background: #BF6F76;
   color: #21203b;
   text-decoration: none;
   font-size: 18px;
-  display: column;
-  padding: 20px;
+  padding: 15px 25px;
+  border-radius: 5px;
+  transition: background 1s ease;
 }
 
-.link-table td:hover {
+.link-table a:hover {
   background: #dec37a;
 }
 
 
 main {
-  height: 800px;
-  padding-top: 32px;
-}
-
-h1, h2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
   text-align: center;
-  font-weight: 400;
-  color: #090526;
-}
-
-h2 {
-  font-size: 16px;
-  margin-bottom: 32px;
 }
 
 .text-box {
-  width: 80%;
-  margin: 30px auto;
+  width: 90%;
+  max-width: 600px;
   padding: 20px;
   background: #cacadb;
   text-align: center;
+  border-radius: 10px;
 }
 
-.text-box h3 {
-  font-size: 24px;
-  color: #21203b;
-  margin-bottom: 10px;
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background: #090526;
+  color: #888797;
 }
 
-.text-box p {
-  font-size: 16px;
-  color: #21203b;
-  line-height: 1.6;
-}
+@media (max-width: 600px) {
+  .link-table {
+      flex-direction: column;
+      align-items: center;
+  }
 
-  footer {
-    footer {
-    height: 100px;
-    background: #090526;
+  .link-table a {
+      margin-bottom: 10px;
+      width: 100%;
+      text-align: center;
+  }
 }
-}
-
