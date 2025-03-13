@@ -1,37 +1,129 @@
 
-  <!doctype html>
-  <html lang="en">
-    <link rel="stylesheet" href="style.css"/>
-  <header>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digitale Kommunikation</title>
+  <link rel="stylesheet" href="style.css">
+<body>
+
+<header>
   <div>Liana Geonjyan WiSe 2024/2025 Digitale Kommunikation</div>
-  </head>
 </header>
-
+<table class="link-table">
+  <tr>
+    <td><a href="index.html">Zurück zur Hauptseite</a></td>
+     </tr>
+</table>
 <main> 
-  <h1> Dokumentation </h1>
-  <h2> Archiv für alle Projekte die im Kurs "Digitale Kommunikation" erstellt wurden. </h2>
-  
-  <table class="link-table">
-    <tr>
-      <td><a href="seite1.html">Analoge Algorithmen</a></td>
-      <td><a href="seite2.html">Perspektive</a></td>
-      <td><a href="seite3.html">Interaktion</a></td>
-      <td><a href="seite4.html">Motion</a></td>
-      <td><a href="seite5.html">Physical Computing</a></td>
-    </tr>
-  </table>
-<div class="text-box">
-    <h3>Reflektion</h3>
-    <p>meow.</p>
+  <h1>Perspektiven</h1>
+  <h2>Unsere Aufgabe war, in p5.js Bilder zu programmieren, die jeweils eine Perspektive darstellen.</h2>
+
+  <div class="text-box">
+      <h3>Extreme Close Up</h3>
+    <img src="https://raw.githubusercontent.com/hbk-bs/the-archives-Liana-Geo/refs/heads/main/assets/images/extrreme%20close%20uup.png" alt="close up von einer taube">
+    <p> function setup() {
+createCanvas(600, 400);
+}
+
+
+function draw() {
+background(97, 103, 105);
+fill("brown");
+stroke("darkgrey");
+strokeWeight(70);
+ellipse(450,200,300);
+strokeWeight(30)
+fill("grey");
+triangle(40, 550, 30, 310, 96, 300);
+circle(30, 280, 45);
+circle(90, 280, 45);
+strokeWeight(10)
+line(120, 30, 95, 105);
+strokeWeight(10);
+line(140,40,135,135);
+
+
+} <p>
+    <h3> Lineare Perspektive </h3>
+      <img src="https://raw.githubusercontent.com/hbk-bs/the-archives-Liana-Geo/refs/heads/main/assets/images/linear%20perspective.png" alt="ein flur mit 3 türen">
+    <p> function setup() {
+createCanvas(600, 400);
+}
+
+function draw() {
+background(220);
+  line(450, 200, 0, 400);
+line(450,200,15,0);
+line(450,200,800,600);
+line(450,200,620,20);
+line(100,140,100,355);
+line(200,180,200,310);
+line(100,140,200,180);
+line(350,200,300,190);
+line(350,200,350,245);
+line(300,190,300,265);
+line(490,200,490,245);
+line(490,200,490,245);
+line(530,180,530,290);
+line(490,200,530,180);
+
+
+
+
+}
+    </p>
+    <h3> Side View </h3>
+    <img src="https://raw.githubusercontent.com/hbk-bs/the-archives-Liana-Geo/refs/heads/main/assets/images/side%20view.png" alt="side view von einer taube">
+    <p>function setup() {
+createCanvas(600, 400);
+}
+
+function draw() {
+background("lightblue");
+stroke("darkgrey")
+circle(500, 180, 290);
+triangle(300, 215, 358, 190, 406, 295);
+fill("white");
+triangle(605, 285, 178, 510, 596, 750);
+circle(470, 180, 25);
+stroke('green');
+strokeWeight(5);
+line(430, 350, 235, 145);
+circle(280, 180, 5);
+circle(240, 160, 5);
+circle(310, 230, 5);
+circle(370, 280, 5);
+
+
+
+
+      } </p>
+    <h3> Silhouette </h3>
+     <img src="https://raw.githubusercontent.com/hbk-bs/the-archives-Liana-Geo/refs/heads/main/assets/images/silhouette.png" alt="silhouette von einer katze">
+    <p> function setup() {
+createCanvas(600, 400);
+}
+
+function draw() {
+background(220);
+ circle(295, 190, 235);
+fill("black")
+  triangle(110, 115, 230, 90, 226, 205);
+triangle(170, 95, 490, 125, 374, 245);
+triangle(300, 150, 458, 450, 86, 450);
+
+ 
+}
+    </p>
+    
+    <h3> Was habe ich durch das "zeichnen" in p5.js gelernt? </h3>
+    <p> hier kommt noch text!!!! </p>
+    
+    
   </div>
-
-
 </main>
 
-<footer> </footer>
-</body>
-</html>
+<footer></footer>
 
+</body>
+ 
