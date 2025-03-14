@@ -1,59 +1,56 @@
+<link rel="stylesheet" href="style.css"/>
 
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digitale Kommunikation</title>
-  <link rel="stylesheet" href="style.css"/>
-</head> 
-<body>
-
-<header>
-  <div>Liana Geonjyan WiSe 2024/2025 Digitale Kommunikation</div>
-</header>
-
- <table class="link-table">
-  <tr>
-    <td><a href="https://hbk-bs.github.io/the-archives-Liana-Geo/">Zurück zur Hauptseite</a></td>
-     </tr>
-</table>
-
-<main> 
-  <h1>Physical Computing</h1>
-  <h2>texttttt</h2>
-
-  <div class="text-box">
-      <h3>HILFE</h3>
-      <p>Zum Physical Computing sollten wir uns alle auf ein Thema einigen, worauf basierend wir unsere Projekte in kleineren Gruppen erstellt haben. Das Thema wurde Straße, der Alptraum von einem Autofahrer. Mein Gruppenmitglied war Anastasiia Naryshkina. Wir haben uns beschlossen mit einem alten paar Kopfhörern, einem Arduino Board, LED Leuchten und einem Mikrofon zu arbeiten.
-      </p>
-     <p><img src="firstconcept.JPG" alt="sketch of headphones with a mp3 player"></p>
-     <video src="prototype.mp4" alt="video vom prototyp. das kleine led leuchtet"></video>
-     <p></p><a href="https://hbk-bs.github.io/the-archives-Liana-Geo/physical%20computing/prototype.mp4">click to play video</a>
-     <p> Am Anfang hatten wir Probleme mit der Sensitivität des Mikrofons. Es hat beim Prototyp erst die LED zum Leuchten gebracht, wenn man direkt ins Mikrofon gepustet hat. Später haben wir es aber so hingekriegt, dass es beim Klatschen reagiert.
-
-     </p>
-     <video src="firstvideo.mp4" alt="video of the headphones on a drawing depicting a person run over. the lights go on at the sound of a clap"> </video>
-    </p><a href="https://hbk-bs.github.io/the-archives-Liana-Geo/physical%20computing/firstvideo.mp4">click to play video</a>
-     <p>Unser ursprünglicher Plan war, dass die Leuchten immer aufleuchten, wenn das Mikrofon Geräusche wahrnimmt. Nur haben wir leider zu spät bemerkt, dass die Leuchten die wir benutzt haben nicht schnell genug auf den Input reagieren können, weshalb wir es umgedacht haben und uns dazu entschieden haben, den Code so zu ändern dass bei einem Lauten Geräusch beide LEDs aufleuchten und einer dann in mehreren Farben leuchtet. 
-      Wir hatten uns gedacht, dass unser Projekt die Kopfhörer sein könnten von einem verunglückten Passanten. </p>
-      
-
-    
-   <video src="finalvideo.mp4" alt="video of the headphones in the dark. they light up at the sound of a clap"></video>
-   <p></p><a href="https://hbk-bs.github.io/the-archives-Liana-Geo/physical%20computing/finalvideo.mp4">click to play video</a>
-<p> 
-
-
-</p>
-
-<h3>Meine Gedanken</h3>
-<p> Insgesamt bin ich nicht ganz zufrieden mit der Wirkung von unserem Projekt. Es passt thematisch nicht zu den anderen Projekten des Physical Computings und der Code hat auch nichts mit den Kopfhörern zu tun. Würde ich dieses Projekt nochmal neu machen, würde ich entweder die Kopfhörer mehr mit einbeziehen, zum Beispiel dass man sie tragen kann und bestimmte Bewegungen bestimmte LEDs zum Leuchten bringen. Oder ich würde den Code so beibehalten und das Äußerliche ganz ändern. Man könnte den Code und die beiden LEDs neu verwenden, zum Beispiel in einer Passanten Ampel oder für eine Laterne. Bei der Passanten Ampel würde es konstant Rot leuchten und wenn man klatscht kurz Grün, bis es blinkt und zurück zu Rot geht. Die Laterne könnte ähnlich funktionieren, dass sie erst richtig leuchtet, wenn man klatscht. So könnte unser Projekt besser integriert sein mit den Projekten des ganzen Kurses.</p>
-<img src="newconcept.jpg" alt="passenger streetlight">
-<img src="newconcept2.jpg" alt="a lantern">
-  </div>
-</main>
-
-<footer></footer>
-
-</body>
-
+#include <FastLED.h>
+  #define LED_PIN 3
+  #define NUM_LEDS 2
+  #define BRIGHTNESS 255
+  #define LED_TYPE WS2811
+  #define COLOR_ORDER RGB
+  CRGB leds[NUM_LEDS];
+  int current_led = 0;
+  int sensorPin = 2;
+  bool inAction = false;
+  void setup() {
+    FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+    FastLED.setBrightness(BRIGHTNESS);
+  Serial.begin(9600);
+    pinMode(sensorPin, INPUT);
+  }
+  void loop() {
+    // Fade the LED in and out
+   if(inAction == false){
+    int soundDetected = digitalRead(sensorPin);
+    // Debugging: Print the sound detection status
+    Serial.println(soundDetected);
+    if (soundDetected == LOW) {
+      inAction = true;
+        digitalWrite(13, LOW);
+    }
+   }else{
+    fill_solid(leds, NUM_LEDS, CRGB::Blue);
+          FastLED.show();
+      delay(200);
+      leds[0] =CRGB::Black;
+          FastLED.show();
+      delay(200);
+      leds[0] = CRGB(100,0,0);
+          FastLED.show();
+      delay(200);
+      leds[0] =CRGB::Black;
+          FastLED.show();
+      delay(200);
+     for (int i = 0; i < 256; i++) {
+      leds[current_led % NUM_LEDS] = CRGB(i, i, i);
+      FastLED.show();
+      delay(10);
+    }
+    for (int i = 255; i >= 0; i--) {
+      leds[current_led % NUM_LEDS] = CRGB(i, i, i);
+      FastLED.show();
+      delay(10);
+    }
+    current_led++;
+      inAction = false;
+   }
+  }
