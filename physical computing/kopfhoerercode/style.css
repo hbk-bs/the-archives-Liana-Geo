@@ -1,0 +1,11 @@
+body {
+  display: block;
+  white-space: pre-wrap; 
+  background-color: white;
+  color: black; 
+  font-family: monospace; 
+  padding: 10px;
+  border: 1px solid #ccc; 
+  line-height: 1.5;
+  overflow-x: auto; 
+}

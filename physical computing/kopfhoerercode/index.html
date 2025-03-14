@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="style.css"/>
+
+
+#include <FastLED.h>
+  #define LED_PIN 3
+  #define NUM_LEDS 2
+  #define BRIGHTNESS 255
+  #define LED_TYPE WS2811
+  #define COLOR_ORDER RGB
+  CRGB leds[NUM_LEDS];
+  int current_led = 0;
+  int sensorPin = 2;
+  bool inAction = false;
+  void setup() {
+    FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+    FastLED.setBrightness(BRIGHTNESS);
+  Serial.begin(9600);
+    pinMode(sensorPin, INPUT);
+  }
+  void loop() {
+    // Fade the LED in and out
+   if(inAction == false){
+    int soundDetected = digitalRead(sensorPin);
+    // Debugging: Print the sound detection status
+    Serial.println(soundDetected);
+    if (soundDetected == LOW) {
+      inAction = true;
+        digitalWrite(13, LOW);
+    }
+   }else{
+    fill_solid(leds, NUM_LEDS, CRGB::Blue);
+          FastLED.show();
+      delay(200);
+      leds[0] =CRGB::Black;
+          FastLED.show();
+      delay(200);
+      leds[0] = CRGB(100,0,0);
+          FastLED.show();
+      delay(200);
+      leds[0] =CRGB::Black;
+          FastLED.show();
+      delay(200);
+     for (int i = 0; i < 256; i++) {
+      leds[current_led % NUM_LEDS] = CRGB(i, i, i);
+      FastLED.show();
+      delay(10);
+    }
+    for (int i = 255; i >= 0; i--) {
+      leds[current_led % NUM_LEDS] = CRGB(i, i, i);
+      FastLED.show();
+      delay(10);
+    }
+    current_led++;
+      inAction = false;
+   }
+  }
