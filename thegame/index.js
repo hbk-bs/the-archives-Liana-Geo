@@ -1,9 +1,12 @@
-
-
-function setup(){
-  const canvas = createCanvas(100,100);
-  canvas.parent("sketch");
-  background("black");
+const button = document.querySelector("button");
+if(button){
+  button.addEventListener("click", ()=>{
+    document.write("you just lost the game");
+    const myPElement =document.createElement ("p")
+    myPElement.textContent = ":P"
+    document.body.appendChild(myPElement)
+  });
+  
+}else{
+  alert("Button not found")
 }
-
-function draw() {}
